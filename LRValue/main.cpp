@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include "DataV1.h"
 #include "DataV2.h"
@@ -13,7 +13,7 @@ void TestV1()
 	typedef DataV1 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456); // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó«ş¨©«Øºc¦¡
+	Data d2 = Data::GenData(20, 456); // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹æ‹·è²å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -41,7 +41,7 @@ void TestV2()
 	typedef DataV2 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -49,7 +49,7 @@ void TestV2()
 	//d.PrintData();
 	//d3.PrintData();
 
-	Data d4 = std::move(d2);  // d2¥¢®Ä
+	Data d4 = std::move(d2);  // d2å¤±æ•ˆ
 	d2.PrintData();
 	d4.PrintData();
 }
@@ -59,7 +59,7 @@ void TestV3()
 	typedef DataV3 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -67,7 +67,7 @@ void TestV3()
 	d.PrintData();
 	d3.PrintData();
 
-	Data d4 = std::move(d2);  // d2¥¢®Ä
+	Data d4 = std::move(d2);  // d2å¤±æ•ˆ
 	d2.PrintData();
 	d4.PrintData();
 }
@@ -77,7 +77,7 @@ void TestV4()
 	typedef DataV4 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -85,7 +85,7 @@ void TestV4()
 	d.PrintData();
 	d3.PrintData();
 
-	Data d4 = std::move(d2);  // d2¥¢®Ä
+	Data d4 = std::move(d2);  // d2å¤±æ•ˆ
 	d2.PrintData();
 	d4.PrintData();
 
@@ -105,7 +105,7 @@ void TestV5()
 	typedef DataV5 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -113,7 +113,7 @@ void TestV5()
 	d.PrintData();
 	d3.PrintData();
 
-	Data d4 = std::move(d2);  // d2¥¢®Ä
+	Data d4 = std::move(d2);  // d2å¤±æ•ˆ
 	d2.PrintData();
 	d4.PrintData();
 
@@ -123,7 +123,7 @@ void TestV5()
 	//d5.PrintData();
 
 	Data d6;
-	d6 = std::move(d);  // d¥¢®Ä
+	d6 = std::move(d);  // då¤±æ•ˆ
 	d.PrintData();
 	d6.PrintData();
 }
@@ -133,7 +133,7 @@ void TestV6()
 	typedef DataV6 Data;
 
 	Data d(10, 123);
-	Data d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -141,7 +141,7 @@ void TestV6()
 	d.PrintData();
 	d3.PrintData();
 
-	Data d4 = std::move(d2);  // d2¥¢®Ä
+	Data d4 = std::move(d2);  // d2å¤±æ•ˆ
 	d2.PrintData();
 	d4.PrintData();
 
@@ -151,7 +151,7 @@ void TestV6()
 	d5.PrintData();
 
 	Data d6;
-	d6 = std::move(d);  // d¥¢®Ä
+	d6 = std::move(d);  // då¤±æ•ˆ
 	d.PrintData();
 	d6.PrintData();
 }
@@ -161,7 +161,7 @@ void TestV7()
 	typedef DataV6 Data;
 
 	Data d(10, 123);
-	Data&& d2 = Data::GenData(20, 456);  // ½sÄ¶¾¹Àu¤Æ±¼¤@­Ó²¾°Ê«Øºc¦¡
+	Data&& d2 = Data::GenData(20, 456);  // ç·¨è­¯å™¨å„ªåŒ–æ‰ä¸€å€‹ç§»å‹•å»ºæ§‹å¼
 	d.PrintData();
 	d2.PrintData();
 
@@ -169,7 +169,7 @@ void TestV7()
 	d.PrintData();
 	d3.PrintData();
 
-	Data&& d4 = std::move(d2);  // ¨S¦³¨Æ±¡µo¥Í
+	Data&& d4 = std::move(d2);  // æ²’æœ‰äº‹æƒ…ç™¼ç”Ÿ
 	d2.PrintData();
 	d4.PrintData();
 
@@ -177,7 +177,7 @@ void TestV7()
 	d2.PrintData(); // size 0
 	d4.PrintData(); // size 0
 
-	d4 = std::move(d3); // d3¥¢®Ä
+	d4 = std::move(d3); // d3å¤±æ•ˆ
 	d3.PrintData();
 	d4.PrintData();
 }

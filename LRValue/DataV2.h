@@ -1,12 +1,12 @@
-#include <vector>
+ï»¿#include <vector>
 #include <iostream>
 
 #pragma once
 
 
 /// <summary>
-/// «ş¨©«Øºc¦¡ X
-/// ²¾°Ê«Øºc¦¡ O
+/// æ‹·è²å»ºæ§‹å¼ X
+/// ç§»å‹•å»ºæ§‹å¼ O
 /// </summary>
 class DataV2
 {
