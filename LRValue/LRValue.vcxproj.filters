@@ -38,5 +38,8 @@
     <ClInclude Include="DataV6.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="FullData.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

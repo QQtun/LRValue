@@ -137,6 +137,7 @@
     <ClInclude Include="DataV4.h" />
     <ClInclude Include="DataV5.h" />
     <ClInclude Include="DataV6.h" />
+    <ClInclude Include="FullData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

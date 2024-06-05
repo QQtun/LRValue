@@ -6,6 +6,7 @@
 #include "DataV4.h"
 #include "DataV5.h"
 #include "DataV6.h"
+#include "FullData.h"
 
 
 void TestV1() 
@@ -182,6 +183,11 @@ void TestV7()
 	d4.PrintData();
 }
 
+void Push(std::vector<DataV6>& v, DataV6& d)
+{
+	v.push_back(std::move(d));
+}
+
 void TestV8() 
 {
 	typedef DataV6 Data;
@@ -191,13 +197,59 @@ void TestV8()
 
 	std::vector<Data> v;
 	v.reserve(10);
-	v.push_back(a); // copy
-	v.push_back(b); // copy
-	v.push_back(std::move(a)); // move
-	v.push_back(Data(1, 222)); // init > move
-	v.emplace_back(1, 333); // init
+	//v.push_back(a); // copy
+	//v.push_back(b); // copy
+	//v.push_back(std::move(a)); // move
+	//v.push_back(Data(1, 222)); // init > move
+	//v.emplace_back(1, 333); // init
+	Push(v, a);
+	a.PrintData();
 
 	std::cout << "v.size " << v.size() << std::endl;
+}
+
+void TestFullData()
+{
+	std::cout << "========== Ctor ============" << std::endl;
+	FullData a(1);
+	FullData b(2);
+	FullData c(3);
+	FullData& d = a;
+	FullData&& e = std::move(a);
+	std::cout << "========== Ctor End ============" << std::endl;
+
+	std::vector<FullData> v;
+	v.reserve(1000);
+	std::cout << "========== push_back(a) ============" << std::endl;
+	v.push_back(a);
+	std::cout << "========== push_back(d) ============" << std::endl;
+	v.push_back(d);
+	std::cout << "========== push_back(e) ============" << std::endl;
+	v.push_back(e);
+	std::cout << "========== push_back(std::move(b)) ============" << std::endl;
+	v.push_back(std::move(b)); // b失效
+	std::cout << "========== push_back(FullData(4)) ============" << std::endl;
+	v.push_back(FullData(4));
+	std::cout << "========== push_back(5) ============" << std::endl;
+	v.push_back(5);
+	std::cout << "========== emplace_back(a) ============" << std::endl;
+	v.emplace_back(a);
+	std::cout << "========== emplace_back(d) ============" << std::endl;
+	v.emplace_back(d);
+	std::cout << "========== emplace_back(e) ============" << std::endl;
+	v.emplace_back(e);
+	std::cout << "========== emplace_back(std::move(c)) ============" << std::endl;
+	v.emplace_back(std::move(c)); // c 失效
+	std::cout << "========== emplace_back(FullData(4)) ============" << std::endl;
+	v.emplace_back(FullData(4));
+	std::cout << "========== emplace_back(5) ============" << std::endl;
+	v.emplace_back(5);
+	std::cout << "========== End ============" << std::endl;
+
+	for (auto it = v.begin(); it != v.end(); ++it)
+	{
+		std::cout << *(*it).data << std::endl;
+	}
 }
 
 int main(int* args)
@@ -218,6 +270,8 @@ int main(int* args)
 	TestV7();
 	std::cout << "========== Test8 Start ============" << std::endl;
 	TestV8();
+	std::cout << "========== TestFullData Start =====" << std::endl;
+	TestFullData();
 
 	return 0;
 }
