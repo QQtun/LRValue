@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
+#include <map>
 #include "DataV1.h"
 #include "DataV2.h"
 #include "DataV3.h"
@@ -214,41 +215,68 @@ void TestFullData()
 	FullData a(1);
 	FullData b(2);
 	FullData c(3);
+	FullData f(3);
 	FullData& d = a;
 	FullData&& e = std::move(a);
 	std::cout << "========== Ctor End ============" << std::endl;
 
-	std::vector<FullData> v;
-	v.reserve(1000);
-	std::cout << "========== push_back(a) ============" << std::endl;
-	v.push_back(a);
-	std::cout << "========== push_back(d) ============" << std::endl;
-	v.push_back(d);
-	std::cout << "========== push_back(e) ============" << std::endl;
-	v.push_back(e);
-	std::cout << "========== push_back(std::move(b)) ============" << std::endl;
-	v.push_back(std::move(b)); // b失效
-	std::cout << "========== push_back(FullData(4)) ============" << std::endl;
-	v.push_back(FullData(4));
-	std::cout << "========== push_back(5) ============" << std::endl;
-	v.push_back(5);
-	std::cout << "========== emplace_back(a) ============" << std::endl;
-	v.emplace_back(a);
-	std::cout << "========== emplace_back(d) ============" << std::endl;
-	v.emplace_back(d);
-	std::cout << "========== emplace_back(e) ============" << std::endl;
-	v.emplace_back(e);
-	std::cout << "========== emplace_back(std::move(c)) ============" << std::endl;
-	v.emplace_back(std::move(c)); // c 失效
-	std::cout << "========== emplace_back(FullData(4)) ============" << std::endl;
-	v.emplace_back(FullData(4));
-	std::cout << "========== emplace_back(5) ============" << std::endl;
-	v.emplace_back(5);
-	std::cout << "========== End ============" << std::endl;
+	//std::vector<FullData> v;
+	//v.reserve(1000);
+	//std::cout << "========== push_back(a) ============" << std::endl;
+	//v.push_back(a);
+	//std::cout << "========== push_back(d) ============" << std::endl;
+	//v.push_back(d);
+	//std::cout << "========== push_back(e) ============" << std::endl;
+	//v.push_back(e);
+	//std::cout << "========== push_back(std::move(b)) ============" << std::endl;
+	//v.push_back(std::move(b)); // b失效
+	//std::cout << "========== push_back(FullData(4)) ============" << std::endl;
+	//v.push_back(FullData(4));
+	//std::cout << "========== push_back(5) ============" << std::endl;
+	//v.push_back(5);
+	//std::cout << "========== emplace_back(a) ============" << std::endl;
+	//v.emplace_back(a);
+	//std::cout << "========== emplace_back(d) ============" << std::endl;
+	//v.emplace_back(d);
+	//std::cout << "========== emplace_back(e) ============" << std::endl;
+	//v.emplace_back(e);
+	//std::cout << "========== emplace_back(std::move(c)) ============" << std::endl;
+	//v.emplace_back(std::move(c)); // c 失效
+	//std::cout << "========== emplace_back(FullData(4)) ============" << std::endl;
+	//v.emplace_back(FullData(4));
+	//std::cout << "========== emplace_back(5) ============" << std::endl;
+	//v.emplace_back(5);
+	//std::cout << "========== End ============" << std::endl;
 
-	for (auto it = v.begin(); it != v.end(); ++it)
+	//for (auto it = v.begin(); it != v.end(); ++it)
+	//{
+	//	std::cout << *(*it).data << std::endl;
+	//}
+
+	std::pair<int, FullData> aPair(1, a);
+	std::pair<int, FullData> bPair(2, b);
+	std::pair<int, FullData> cPair(3, c);
+	std::pair<int, FullData> fPair(4, f);
+
+
 	{
-		std::cout << *(*it).data << std::endl;
+		std::map<int, FullData> m;
+		std::cout << "========== insert(aPair) ============" << std::endl;
+		m.insert(aPair); // copy * 2
+		std::cout << "========== insert({ 2, b }) ============" << std::endl;
+		m.insert({ 2, b }); // copy *2 + move * 1
+		std::cout << "========== insert(std::move(cPair)) ============" << std::endl;
+		m.insert(std::move(cPair)); // copy * 2
+	}
+
+	{
+		std::map<int, FullData> m;
+		std::cout << "========== emplace(aPair) ============" << std::endl;
+		m.emplace(aPair); // copy * 2
+		std::cout << "========== emplace(2, b) ============" << std::endl;
+		m.emplace(2, b); // copy * 1
+		std::cout << "========== emplace(std::move(fPair)) ============" << std::endl;
+		m.emplace(std::move(fPair)); // copy * 1 + move * 1
 	}
 }
 
