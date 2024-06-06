@@ -33,10 +33,12 @@ public:
 	static DataV5 GenData(int l, int initValue)
 	{
 		DataV5 d(l, initValue);
+		std::cout << "Gen ";
+		d.PrintData();
 		return d;
 	}
 
-	void PrintData()
+	void PrintData() const
 	{
 		std::cout << "data " << m_data.data() << " size " << m_data.size() << std::endl;
 	}

@@ -38,6 +38,10 @@
     <ClInclude Include="DataV6.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="DataV0.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCMCtor.h">
     <ClInclude Include="FullData.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
